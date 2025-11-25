@@ -1,0 +1,2254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Book - Business Process SALIMS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 280px;
+            height: 100vh;
+            background: #2c3e50;
+            color: white;
+            overflow-y: auto;
+            padding: 2rem 1rem;
+            z-index: 1000;
+        }
+
+        .sidebar h2 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #34495e;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin: 0.5rem 0;
+        }
+
+        .sidebar ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            background: #34495e;
+        }
+
+        .sidebar ul ul {
+            margin-left: 1rem;
+            margin-top: 0.25rem;
+        }
+
+        .sidebar ul ul li a {
+            font-size: 0.9rem;
+            color: #bdc3c7;
+        }
+
+        .content {
+            margin-left: 280px;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        section h2 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #667eea;
+        }
+
+        section h3 {
+            color: #764ba2;
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        section h4 {
+            color: #555;
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .process-flow {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-left: 4px solid #667eea;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .process-flow ol {
+            margin-left: 1.5rem;
+        }
+
+        .process-flow ol li {
+            margin: 0.5rem 0;
+        }
+
+        .role-box {
+            background: #e8f4f8;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            border-left: 4px solid #3498db;
+        }
+
+        .role-box strong {
+            color: #2980b9;
+        }
+
+        .decision-box {
+            background: #fff3cd;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            border-left: 4px solid #ffc107;
+        }
+
+        .output-box {
+            background: #d4edda;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            border-left: 4px solid #28a745;
+        }
+
+        .note-box {
+            background: #f8d7da;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            border-left: 4px solid #dc3545;
+        }
+
+        .diagram-placeholder {
+            background: #f0f0f0;
+            border: 2px dashed #ccc;
+            padding: 3rem;
+            text-align: center;
+            border-radius: 8px;
+            margin: 2rem 0;
+            color: #666;
+        }
+
+        .diagram-placeholder::before {
+            content: "📊 ";
+            font-size: 3rem;
+        }
+
+        .diagram-container {
+            margin: 2rem 0;
+            text-align: center;
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .diagram-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            margin: 0 auto;
+            display: block;
+        }
+
+        .diagram-container .diagram-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .diagram-container .diagram-caption {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-top: 0.75rem;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .diagram-container {
+                padding: 1rem;
+            }
+
+            .diagram-container img {
+                border-radius: 4px;
+            }
+        }
+
+        .screenshot-container {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+        }
+
+        .screenshot-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: block;
+            margin: 0 auto;
+        }
+
+        .screenshot-container h5 {
+            margin-bottom: 0.75rem;
+            color: #495057;
+        }
+
+        .screenshot-error {
+            display: none;
+            padding: 2rem;
+            text-align: center;
+            color: #6c757d;
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        table th,
+        table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background: #667eea;
+            color: white;
+        }
+
+        table tr:hover {
+            background: #f5f5f5;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .glossary-item {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+
+        .glossary-item strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #667eea;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
+                width: 280px;
+                box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .content {
+                margin-left: 0;
+                padding: 1rem;
+            }
+
+            .menu-toggle {
+                position: fixed;
+                top: 1rem;
+                left: 1rem;
+                z-index: 1001;
+                background: #667eea;
+                color: white;
+                border: none;
+                padding: 0.75rem 1rem;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 1rem;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                transition: background 0.3s;
+            }
+
+        @media (min-width: 769px) {
+            .menu-toggle {
+                display: none !important;
+            }
+        }
+
+            .menu-toggle:hover {
+                background: #5568d3;
+            }
+
+            .menu-toggle span {
+                display: inline-block;
+            }
+
+            .sidebar-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                z-index: 999;
+                opacity: 0;
+                transition: opacity 0.3s ease-in-out;
+            }
+
+            .sidebar-overlay.active {
+                display: block;
+                opacity: 1;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 1rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            section h3 {
+                font-size: 1.3rem;
+            }
+        }
+
+        .toc {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin-left: 1rem;
+        }
+
+        .toc ul li {
+            margin: 0.5rem 0;
+        }
+
+        .toc ul li a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .toc ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Manual Book</h1>
+            <p>Business Process SALIMS - Sistem Administrasi Laboratorium</p>
+        </header>
+
+        <div class="sidebar" id="sidebar">
+            <h2>📋 Daftar Isi</h2>
+            <ul>
+                <li><a href="#overview">Overview Sistem</a></li>
+                <li><a href="#business-overview">Business Process Overview</a></li>
+                <li><a href="#processes">Proses Bisnis Detail</a>
+                    <ul>
+                        <li><a href="#process-1">1. Pendaftaran Pelanggan</a></li>
+                        <li><a href="#process-2">2. Administrasi Sampel Uji</a></li>
+                        <li><a href="#process-3">3. Kaji Ulang Permintaan (KUP)</a></li>
+                        <li><a href="#process-4">4. Verifikasi Pembayaran</a></li>
+                        <li><a href="#process-5">5. Pengambilan Sampel</a></li>
+                        <li><a href="#process-6">6. Pengolahan Sampel</a></li>
+                        <li><a href="#process-7">7. Penanganan Sampel</a></li>
+                        <li><a href="#process-8">8. Persiapan Pengujian</a></li>
+                        <li><a href="#process-9">9. Penerbitan LHU</a></li>
+                        <li><a href="#process-10">10. Manajemen Persediaan</a></li>
+                        <li><a href="#process-11">11. Manajemen Aset</a></li>
+                        <li><a href="#process-12">12. Proses Approval</a></li>
+                    </ul>
+                </li>
+                <li><a href="#integration">Integrasi Data</a></li>
+                <li><a href="#roles">Role dan Tanggung Jawab</a></li>
+                <li><a href="#glossary">Glossary</a></li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <section id="overview">
+                <h2>Overview Sistem</h2>
+                <p>SALIMS (Sistem Administrasi Laboratorium) adalah sistem terintegrasi yang mengelola seluruh proses bisnis laboratorium pengujian, mulai dari pendaftaran pelanggan hingga penerbitan Laporan Hasil Uji (LHU). Sistem ini dirancang untuk mengoptimalkan alur kerja, meningkatkan akurasi data, dan memastikan kepatuhan terhadap standar kualitas laboratorium.</p>
+                
+                <h3>Fitur Utama:</h3>
+                <ul>
+                    <li><strong>Manajemen Pelanggan</strong>: Pendaftaran dan manajemen data pelanggan</li>
+                    <li><strong>Administrasi Sampel</strong>: Pengelolaan permintaan pengujian dan sampel</li>
+                    <li><strong>Manajemen Pengujian</strong>: Proses pengujian dari persiapan hingga hasil</li>
+                    <li><strong>Manajemen Pembayaran</strong>: Verifikasi dan konfirmasi pembayaran</li>
+                    <li><strong>Manajemen Persediaan</strong>: Pengelolaan bahan uji dan persediaan</li>
+                    <li><strong>Manajemen Aset</strong>: Pemeliharaan dan kalibrasi peralatan</li>
+                    <li><strong>Integrasi Data</strong>: Integrasi dengan sistem eksternal (CIS)</li>
+                </ul>
+            </section>
+
+            <section id="business-overview">
+                <h2>Business Process Overview</h2>
+                <p>Sistem SALIMS terdiri dari 4 proses bisnis utama yang saling terintegrasi:</p>
+                
+                <div class="diagram-container">
+                    <div class="diagram-title">Business Process Overview</div>
+                    <img src="diagrams/business-process-overview.png" 
+                         alt="Business Process Overview - SALIMS" 
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="diagram-placeholder" style="display: none;">
+                        Diagram: Business Process Overview<br>
+                        <small>Simpan diagram dengan nama <code>business-process-overview.png</code> di folder <code>diagrams/</code></small>
+                    </div>
+                    <div class="diagram-caption">Diagram Business Process Overview - Menampilkan 4 proses bisnis utama yang saling terintegrasi</div>
+                </div>
+
+                <h3>Proses Bisnis Utama:</h3>
+                <ol>
+                    <li><strong>Administrasi Sampel Uji</strong> ↔ <strong>Penanganan Sampel</strong>: Penyerahan Sampel Uji & Penyerahan Hasil Uji</li>
+                    <li><strong>Penanganan Sampel</strong> ↔ <strong>Manajemen Persediaan</strong>: Penggunaan Bahan Uji & Penyerahan Bahan Uji</li>
+                    <li><strong>Penanganan Sampel</strong> ↔ <strong>Manajemen Aset</strong>: Penggunaan Peralatan Uji & Informasi Peralatan Uji</li>
+                    <li><strong>Integrasi Data</strong>: Menerima data dari semua proses bisnis utama</li>
+                </ol>
+            </section>
+
+            <section id="processes">
+                <h2>Proses Bisnis Detail</h2>
+
+                <div id="process-1">
+                    <h3>1. Pendaftaran Pelanggan</h3>
+                    <p><strong>Deskripsi</strong>: Proses pendaftaran pelanggan baru melalui portal pelanggan dengan verifikasi data oleh admin.</p>
+                    
+                    <div class="diagram-container">
+                        <div class="diagram-title">Business Process Pendaftaran Pelanggan</div>
+                        <img src="diagrams/process-1-pendaftaran-pelanggan.png" 
+                             alt="Business Process Pendaftaran Pelanggan - SALIMS" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="diagram-placeholder" style="display: none;">
+                            Diagram: Business Process Pendaftaran Pelanggan<br>
+                            <small>Simpan diagram dengan nama <code>process-1-pendaftaran-pelanggan.png</code> di folder <code>diagrams/</code></small>
+                        </div>
+                        <div class="diagram-caption">Diagram alur proses pendaftaran pelanggan baru melalui portal pelanggan</div>
+                    </div>
+
+                    <div class="role-box">
+                        <strong>Role yang Terlibat:</strong>
+                        <ul>
+                            <li><strong>Pelanggan</strong>: Melakukan pendaftaran dan mengisi data</li>
+                            <li><strong>Admin</strong>: Verifikasi data pendaftaran</li>
+                        </ul>
+                    </div>
+
+                    <h4>Alur Proses:</h4>
+                    <div class="process-flow">
+                        <ol>
+                            <li><strong>Mulai</strong> → Pelanggan memulai proses pendaftaran</li>
+                            <li><strong>Melakukan Pendaftaran Pelanggan Pada Portal Pelanggan</strong> - Pelanggan mengakses portal dan memulai pendaftaran</li>
+                            <li><strong>Mengisi Data Pelanggan</strong> - Pelanggan mengisi formulir pendaftaran dengan data lengkap</li>
+                            <li><strong>Akses Data</strong> (Intermediate Event) - Data pendaftaran diakses oleh sistem untuk verifikasi</li>
+                            <li><strong>Verifikasi Data Pendaftaran</strong> (Admin) - Admin memverifikasi kelengkapan dan kebenaran data</li>
+                            <li><strong>Decision: Data Lengkap?</strong>
+                                <ul>
+                                    <li><strong>Tidak</strong>: Kembali ke langkah 3 (Mengisi Data Pelanggan)</li>
+                                    <li><strong>Ya</strong>: Lanjut ke langkah 7</li>
+                                </ul>
+                            </li>
+                            <li><strong>Menerima Informasi Pendaftaran Disetujui</strong> - Pelanggan menerima notifikasi persetujuan pendaftaran</li>
+                            <li><strong>Selesai</strong></li>
+                        </ol>
+                    </div>
+
+                    <div class="output-box">
+                        <strong>Output:</strong>
+                        <ul>
+                            <li>Data pelanggan terdaftar dalam sistem</li>
+                            <li>Status pendaftaran: Disetujui</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <strong>Catatan Penting:</strong>
+                        <ul>
+                            <li>Data harus lengkap dan valid sebelum disetujui</li>
+                            <li>Pelanggan dapat memperbaiki data jika ditolak</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="process-2">
+                    <h3>2. Administrasi Sampel Uji</h3>
+                    <p><strong>Deskripsi</strong>: Proses administrasi lengkap dari permintaan pengujian sampel hingga penerbitan LHU, melibatkan pelanggan, customer service admin, dan technical manager.</p>
+                    
+                    <div class="diagram-container">
+                        <div class="diagram-title">Business Process Administrasi Sampel Uji</div>
+                        <img src="diagrams/process-2-administrasi-sampel-uji.png" 
+                             alt="Business Process Administrasi Sampel Uji - SALIMS" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="diagram-placeholder" style="display: none;">
+                            Diagram: Business Process Administrasi Sampel Uji<br>
+                            <small>Simpan diagram dengan nama <code>process-2-administrasi-sampel-uji.png</code> di folder <code>diagrams/</code></small>
+                        </div>
+                        <div class="diagram-caption">Diagram alur proses administrasi lengkap dari permintaan pengujian sampel hingga penerbitan LHU</div>
+                    </div>
+
+                    <div class="role-box">
+                        <strong>Role yang Terlibat:</strong>
+                        <ul>
+                            <li><strong>Pelanggan</strong>: Mengajukan permintaan, melakukan pembayaran, menerima hasil</li>
+                            <li><strong>Pelayanan Kepada Pelanggan Admin</strong>: Menganalisa permintaan, mengelola pembayaran, menyiapkan dokumen</li>
+                            <li><strong>Manajer Teknis</strong>: Melakukan KUP, menganalisa permintaan pengujian, membuat jadwal pengambilan sampel</li>
+                        </ul>
+                    </div>
+
+                    <h4>Alur Proses:</h4>
+                    <h5>Fase 1: Pendaftaran dan Analisa Permintaan</h5>
+                    <div class="process-flow">
+                        <ol>
+                            <li><strong>Mulai</strong> → Pelanggan memulai proses</li>
+                            <li><strong>Melakukan Pendaftaran Pelanggan</strong> - Jika belum terdaftar</li>
+                            <li><strong>Decision: Pelanggan Sudah Terdaftar?</strong> - Jika tidak, kembali ke langkah 2</li>
+                            <li><strong>Mengisi Form Permintaan Pengujian Sampel</strong>
+                                <div class="note-box" style="margin-top: 0.5rem; background: #e7f3ff; border-left-color: #2196F3;">
+                                    <strong>📱 Implementasi Sistem:</strong> Form "Testing Order" di modul Sample Handling<br>
+                                    <small>
+                                        <strong>Request Details:</strong> Request Number, Request Date, Periode, Customer, Request By, Description<br>
+                                        <strong>Section SAMPLE:</strong> Menambahkan data sampel yang akan diuji (Sample No, Sample Name, Version, Service Type, Sample Category, Zona Name, Sub Zona Name, Is Acceleration, Subtotal Price)<br>
+                                        <strong>Section QUALITY REFERENCE:</strong> Menambahkan referensi kualitas untuk sampel (Quality Reference Name, Description) - digunakan sebagai standar acuan kualitas<br>
+                                        <strong>Section PARAMETER:</strong> Menambahkan parameter pengujian yang akan dilakukan (Parameter Name, Method ID, In Situ, Price) - menentukan jenis pengujian dan metode yang digunakan
+                                    </small>
+                                </div>
+                                
+                                <!-- Screenshot Form Testing Order -->
+                                <div style="margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border: 1px solid #dee2e6;">
+                                    <h5 style="margin-bottom: 0.75rem; color: #495057;">📸 Screenshot: Form Testing Order</h5>
+                                    <!-- Ganti src dengan path gambar Anda atau gunakan base64 -->
+                                    <img src="images/testing-order-form.png" 
+                                         alt="Form Testing Order - SALIMS" 
+                                         style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"
+                                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <div style="display: none; padding: 2rem; text-align: center; color: #6c757d; background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 4px;">
+                                        <p>⚠️ Gambar tidak ditemukan. Silakan:</p>
+                                        <ol style="text-align: left; display: inline-block; margin-top: 0.5rem;">
+                                            <li>Simpan screenshot dengan nama <code>testing-order-form.png</code></li>
+                                            <li>Letakkan di folder <code>images/</code> relatif terhadap file HTML ini</li>
+                                            <li>Atau ganti path <code>src</code> pada tag img di atas</li>
+                                        </ol>
+                                    </div>
+                                    <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #6c757d;">
+                                        <strong>Catatan:</strong> Screenshot menunjukkan form Testing Order dengan section SAMPLE, QUALITY REFERENCE, dan PARAMETER
+                                    </p>
+                                </div>
+                            </li>
+                            <li><strong>Menganalisa Permintaan</strong> (Admin)</li>
+                            <li><strong>Approval Testing Order</strong> - Lihat detail di <a href="#process-12">Proses 12: Proses Approval</a></li>
+                            <li><strong>Kaji Ulang Permintaan (KUP)</strong> (Manajer Teknis)</li>
+                            <li><strong>Hasil KUP</strong> (Message Event)</li>
+                            <li><strong>Decision: Dapat Dilakukan Pengujian?</strong></li>
+                            <li><strong>Decision: Lanjutkan Proses Pengujian?</strong></li>
+                        </ol>
+                    </div>
+
+                    <h5>Fase 2: Pembayaran</h5>
+                    <div class="process-flow">
+                        <ol>
+                            <li><strong>Decision: Pelanggan Non MoU (Pra-Bayar)?</strong></li>
+                            <li><strong>Mengkalkulasi Biaya Pengujian</strong> (jika diperlukan)
+                                <div class="note-box" style="margin-top: 0.5rem; background: #e7f3ff; border-left-color: #2196F3;">
+                                    <strong>📱 Implementasi Sistem:</strong> Bagian "Additional Cost" dan "Detail Price" di form Testing Order<br>
+                                    <small>Section ini mencakup: Additional Cost (biaya tambahan), Detail Price (Gross, Discount, DPP, VAT, PPH, NET) untuk kalkulasi total biaya pengujian.</small>
+                                </div>
+                            </li>
+                            <li><strong>Menerbitkan Tagihan</strong></li>
+                            <li><strong>Melakukan Pembayaran</strong> (Pelanggan)</li>
+                            <li><strong>Verifikasi Pembayaran</strong> (Admin)</li>
+                        </ol>
+                    </div>
+
+                    <h5>Fase 3: Pengambilan Sampel dan Dokumen</h5>
+                    <div class="process-flow">
+                        <ol>
+                            <li><strong>Menyiapkan Dokumen Pengajuan</strong> (Admin)</li>
+                            <li><strong>Decision: Sampel Dibawa Pelanggan?</strong>
+                                <ul>
+                                    <li><strong>Ya</strong>: Mengirim Bukti Penerimaan Pengajuan</li>
+                                    <li><strong>Tidak</strong>: Membuat Jadwal Pengambilan Sampel</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <h5>Fase 4: Proses Pengujian dan LHU</h5>
+                    <div class="process-flow">
+                        <ol>
+                            <li><strong>Proses Pengujian Selesai</strong> (Message Event)</li>
+                            <li><strong>Memberikan LHU</strong> (Admin)</li>
+                            <li><strong>Selesai</strong></li>
+                        </ol>
+                    </div>
+
+                    <div class="output-box">
+                        <strong>Output:</strong>
+                        <ul>
+                            <li>Permintaan pengujian terdaftar</li>
+                            <li>Tagihan (jika diperlukan)</li>
+                            <li>Bukti pembayaran</li>
+                            <li>Bukti penerimaan pengajuan</li>
+                            <li>LHU (Laporan Hasil Uji)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="process-3">
+                    <h3>3. Kaji Ulang Permintaan (KUP)</h3>
+                    <p><strong>Deskripsi</strong>: Proses review teknis untuk menentukan kelayakan permintaan pengujian berdasarkan ketersediaan peralatan, bahan uji, analis, dan metode uji.</p>
+                    
+                    <div class="diagram-container">
+                        <div class="diagram-title">Business Process Kaji Ulang Permintaan (KUP)</div>
+                        <img src="diagrams/process-3-kaji-ulang-permintaan.png" 
+                             alt="Business Process Kaji Ulang Permintaan (KUP) - SALIMS" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="diagram-placeholder" style="display: none;">
+                            Diagram: Business Process Kaji Ulang Permintaan (KUP)<br>
+                            <small>Simpan diagram dengan nama <code>process-3-kaji-ulang-permintaan.png</code> di folder <code>diagrams/</code></small>
+                        </div>
+                        <div class="diagram-caption">Diagram alur proses review teknis untuk menentukan kelayakan permintaan pengujian</div>
+                    </div>
+
+                    <div class="role-box">
+                        <strong>Role yang Terlibat:</strong>
+                        <ul>
+                            <li><strong>Manager Teknis</strong>: Menganalisa ketersediaan peralatan dan bahan uji</li>
+                            <li><strong>Analis</strong>: Menganalisa ketersediaan analis dan metode uji</li>
+                        </ul>
+                    </div>
+
+                    <h4>Alur Proses:</h4>
+                    <div class="process-flow">
+                        <ol>
+                            <li><strong>Mulai</strong> → Trigger dari proses Administrasi Sampel Uji</li>
+                            <li><strong>Menganalisa Permintaan Pengujian</strong> (Manager Teknis)</li>
+                            <li><strong>Parallel Gateway (Split)</strong> → Tiga proses paralel:
+                                <ul>
+                                    <li><strong>Path 1</strong>: Ketersediaan Peralatan</li>
+                                    <li><strong>Path 2</strong>: Ketersediaan Bahan Uji</li>
+                                    <li><strong>Path 3</strong>: Ketersediaan Analis dan Metode Uji</li>
+                                </ul>
+                            </li>
+                            <li><strong>Parallel Gateway (Join)</strong> - Semua path bergabung</li>
+                            <li><strong>Hasil KUP</strong> (Message Event)</li>
+                            <li><strong>Selesai</strong></li>
+                        </ol>
+                    </div>
+
+                    <div class="output-box">
+                        <strong>Output:</strong>
+                        <ul>
+                            <li>Hasil KUP (Kaji Ulang Permintaan)</li>
+                            <li>Status ketersediaan: Dapat/Tidak Dapat Dilakukan Pengujian</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="process-4">
+                    <h3>4. Verifikasi Pembayaran</h3>
+                    <p><strong>Deskripsi</strong>: Proses verifikasi pembayaran pelanggan dengan integrasi ke sistem CIS (Customer Information System) untuk mendapatkan data pembayaran.</p>
+                    
+                    <div class="diagram-container">
+                        <div class="diagram-title">Business Process Verifikasi Pembayaran</div>
+                        <img src="diagrams/process-4-verifikasi-pembayaran.png" 
+                             alt="Business Process Verifikasi Pembayaran - SALIMS" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="diagram-placeholder" style="display: none;">
+                            Diagram: Business Process Verifikasi Pembayaran<br>
+                            <small>Simpan diagram dengan nama <code>process-4-verifikasi-pembayaran.png</code> di folder <code>diagrams/</code></small>
+                        </div>
+                        <div class="diagram-caption">Diagram alur proses verifikasi pembayaran pelanggan</div>
+                    </div>
+
+                    <div class="role-box">
+                        <strong>Role yang Terlibat:</strong>
+                        <ul>
+                            <li><strong>Admin</strong>: Melakukan verifikasi pembayaran</li>
+                            <li><strong>Data Integration (API CIS)</strong>: Menyediakan data pembayaran</li>
+                        </ul>
+                    </div>
+
+                    <h4>Alur Proses:</h4>
+                    <div class="process-flow">
+                        <ol>
+                            <li><strong>Mulai</strong> → Admin memulai proses verifikasi</li>
+                            <li><strong>Menkonfirmasi Pembayaran Atas Nomor Permohonan Pengujian</strong></li>
+                            <li><strong>Melakukan Pencarian Data Pembayaran</strong></li>
+                            <li><strong>Decision: Terhubung dengan CIS?</strong>
+                                <ul>
+                                    <li><strong>Tidak</strong>: Kembali ke langkah 3 (retry)</li>
+                                    <li><strong>Ya</strong>: Lanjut ke langkah 5</li>
+                                </ul>
+                            </li>
+                            <li><strong>Menerima Data Pembayaran</strong> (dari API CIS)</li>
+                            <li><strong>Selesai</strong></li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div id="process-5">
+                    <h3>5. Pengambilan Sampel</h3>
+                    <p><strong>Deskripsi</strong>: Proses pengambilan sampel di lapangan, termasuk persiapan peralatan, kalibrasi, pencetakan barcode, dan pengujian in-situ jika diperlukan.</p>
+                    
+                    <div class="diagram-container">
+                        <div class="diagram-title">Business Process Pengambilan Sampel</div>
+                        <img src="diagrams/process-5-pengambilan-sampel.png" 
+                             alt="Business Process Pengambilan Sampel - SALIMS" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="diagram-placeholder" style="display: none;">
+                            Diagram: Business Process Pengambilan Sampel<br>
+                            <small>Simpan diagram dengan nama <code>process-5-pengambilan-sampel.png</code> di folder <code>diagrams/</code></small>
+                        </div>
+                        <div class="diagram-caption">Diagram alur proses pengambilan sampel di lapangan</div>
+                    </div>
+
+                    <div class="role-box">
+                        <strong>Role yang Terlibat:</strong>
+                        <ul>
+                            <li><strong>Pengambilan Sampel (PPS)</strong>: Tim yang melakukan pengambilan sampel</li>
+                            <li><strong>Admin Persediaan</strong>: Mengkonfirmasi penggunaan peralatan dan bahan uji</li>
+                        </ul>
+                    </div>
+
+                    <h4>Alur Proses:</h4>
+                    <div class="process-flow">
+                        <ol>
+                            <li><strong>Skedul Pengambilan Sampel</strong> (Timer Start Event)</li>
+                            <li><strong>Planning Taking Sample (Perencanaan Pengambilan Sampel)</strong>
+                                <div class="note-box" style="margin-top: 0.5rem; background: #e7f3ff; border-left-color: #2196F3;">
+                                    <strong>📱 Implementasi Sistem:</strong> Form "Planning Taking Sample" di modul Sample Handling<br>
+                                    <small>
+                                        <strong>Planning Details:</strong> Planning Taking Sample Number, Request Number (dari Testing Order), PTS Date, Periode, Description<br>
+                                        <strong>Section SAMPLE:</strong> Data sampel yang akan diambil dengan status:
+                                        <ul style="margin-top: 0.25rem; margin-left: 1.5rem;">
+                                            <li>Equipment Sample Status - Status ketersediaan peralatan untuk sampel</li>
+                                            <li>Equipment Parameter Status - Status ketersediaan peralatan untuk parameter</li>
+                                            <li>Labour Status - Status ketersediaan tenaga kerja</li>
+                                            <li>Product Status - Status ketersediaan produk/bahan</li>
+                                        </ul>
+                                        <strong>Section EQUIPMENT:</strong> Daftar peralatan yang akan digunakan (Equipment Name, Equipment Version, Due Date Calibration, Hold Duration)<br>
+                                        <strong>Section LABOUR:</strong> Daftar tenaga kerja yang akan ditugaskan (Labour Name, Hold Duration)<br>
+                                        <strong>Section PARAMETER:</strong> Parameter pengujian yang akan dilakukan (Parameter Name, Standard Duration)
+                                    </small>
+                                </div>
+                                
+                                <!-- Screenshot Planning Taking Sample -->
+                                <div style="margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border: 1px solid #dee2e6;">
+                                    <h5 style="margin-bottom: 0.75rem; color: #495057;">📸 Screenshot: Form Planning Taking Sample</h5>
+                                    <!-- Ganti src dengan path gambar Anda atau gunakan base64 -->
+                                    <img src="images/planning-taking-sample-form.png" 
+                                         alt="Form Planning Taking Sample - SALIMS" 
+                                         style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"
+                                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <div style="display: none; padding: 2rem; text-align: center; color: #6c757d; background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 4px;">
+                                        <p>⚠️ Gambar tidak ditemukan. Silakan:</p>
+                                        <ol style="text-align: left; display: inline-block; margin-top: 0.5rem;">
+                                            <li>Simpan screenshot dengan nama <code>planning-taking-sample-form.png</code></li>
+                                            <li>Letakkan di folder <code>images/</code> relatif terhadap file HTML ini</li>
+                                            <li>Atau ganti path <code>src</code> pada tag img di atas</li>
+                                        </ol>
+                                    </div>
+                                    <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #6c757d;">
+                                        <strong>Catatan:</strong> Form ini digunakan untuk merencanakan pengambilan sampel dengan menentukan peralatan, tenaga kerja, dan parameter yang diperlukan
+                                    </p>
+                                </div>
+                            </li>
+                            <li><strong>Mengecek Permintaan Pengambilan Sampel Uji</strong></li>
+                            <li><strong>Parallel Gateway (Split)</strong> → Dua persiapan paralel:
+                                <ul>
+                                    <li>Persiapan Peralatan Uji</li>
+                                    <li>Persiapan Bahan Uji</li>
+                                </ul>
+                            </li>
+                            <li><strong>Mengkonfirmasi Penggunaan Peralatan dan Bahan Uji</strong> (Admin Persediaan)</li>
+                            <li><strong>Decision: Perlu Dikalibrasi?</strong>
+                                <ul>
+                                    <li><strong>Ya</strong>: Melakukan Kalibrasi</li>
+                                    <li><strong>Tidak</strong>: Langsung ke langkah berikutnya</li>
+                                </ul>
+                            </li>
+                            <li><strong>Melakukan Print Barcode Permintaan Pengujian</strong></li>
+                            <li><strong>Sub-process: Pengambilan Sampel Dilapangan</strong>
+                                <ul>
+                                    <li><strong>Melakukan Pengambilan Sampel</strong>
+                                        <div class="note-box" style="margin-top: 0.5rem; background: #e7f3ff; border-left-color: #2196F3;">
+                                            <strong>📱 Implementasi Sistem:</strong> Form "Taking Sample" di modul Sample Handling<br>
+                                            <small>
+                                                <strong>Taking Sample Details:</strong>
+                                                <ul style="margin-top: 0.25rem; margin-left: 1.5rem;">
+                                                    <li>Taking Sample Number, Periode, Taking Sample Date</li>
+                                                    <li>Planning Taking Sample Number - Relasi dengan Planning Taking Sample</li>
+                                                    <li>Sample Code, Sample No</li>
+                                                </ul>
+                                                <strong>Lokasi dan Kondisi:</strong>
+                                                <ul style="margin-top: 0.25rem; margin-left: 1.5rem;">
+                                                    <li>Geo Tag - Koordinat GPS lokasi pengambilan</li>
+                                                    <li>Address - Alamat lokasi pengambilan sampel</li>
+                                                    <li>Weather - Kondisi cuaca saat pengambilan</li>
+                                                    <li>Wind Direction - Arah angin</li>
+                                                    <li>Temperatur - Suhu saat pengambilan</li>
+                                                </ul>
+                                                <strong>Personnel:</strong> Sampling By - Nama personel yang melakukan pengambilan<br>
+                                                <strong>Additional Data:</strong> Description, Parameter pengujian, Foto sampel (upload)
+                                            </small>
+                                        </div>
+                                        
+                                        <!-- Screenshot Taking Sample -->
+                                        <div style="margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border: 1px solid #dee2e6;">
+                                            <h5 style="margin-bottom: 0.75rem; color: #495057;">📸 Screenshot: Form Taking Sample</h5>
+                                            <!-- Ganti src dengan path gambar Anda atau gunakan base64 -->
+                                            <img src="images/taking-sample-form.png" 
+                                                 alt="Form Taking Sample - SALIMS" 
+                                                 style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"
+                                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                            <div style="display: none; padding: 2rem; text-align: center; color: #6c757d; background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 4px;">
+                                                <p>⚠️ Gambar tidak ditemukan. Silakan:</p>
+                                                <ol style="text-align: left; display: inline-block; margin-top: 0.5rem;">
+                                                    <li>Simpan screenshot dengan nama <code>taking-sample-form.png</code></li>
+                                                    <li>Letakkan di folder <code>images/</code> relatif terhadap file HTML ini</li>
+                                                    <li>Atau ganti path <code>src</code> pada tag img di atas</li>
+                                                </ol>
+                                            </div>
+                                            <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #6c757d;">
+                                                <strong>Catatan:</strong> Form ini digunakan untuk mencatat data pengambilan sampel aktual di lapangan, termasuk lokasi (GPS), kondisi cuaca, dan informasi lain yang diperlukan untuk traceability
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li><strong>Decision: Permintaan Pengujian In-situ?</strong>
+                                        <ul>
+                                            <li><strong>Ya</strong>: Melakukan Pengujian In-situ</li>
+                                            <li><strong>Tidak</strong>: Langsung ke langkah berikutnya</li>
+                                        </ul>
+                                    </li>
+                                    <li>Mencatat Informasi Sampel Sesuai dengan Label</li>
+                                </ul>
+                            </li>
+                            <li><strong>Membawa Sampel Ke Laboratorium</strong></li>
+                            <li><strong>Selesai</strong></li>
+                        </ol>
+                    </div>
+
+                    <div class="output-box">
+                        <strong>Output:</strong>
+                        <ul>
+                            <li>Sampel yang telah diambil dan dilabeli</li>
+                            <li>Data pengambilan sampel</li>
+                            <li>Hasil pengujian in-situ (jika ada)</li>
+                            <li>Barcode untuk tracking</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="process-6">
+                    <h3>6. Pengolahan Sampel</h3>
+                    <p><strong>Deskripsi</strong>: Proses pengolahan sampel setelah diterima di laboratorium, termasuk pembagian sampel, penambahan bahan, pendinginan, dan penyimpanan.</p>
+                    
+                    <div class="diagram-container">
+                        <div class="diagram-title">Business Process Pengolahan Sampel</div>
+                        <img src="diagrams/process-6-pengolahan-sampel.png" 
+                             alt="Business Process Pengolahan Sampel - SALIMS" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="diagram-placeholder" style="display: none;">
+                            Diagram: Business Process Pengolahan Sampel<br>
+                            <small>Simpan diagram dengan nama <code>process-6-pengolahan-sampel.png</code> di folder <code>diagrams/</code></small>
+                        </div>
+                        <div class="diagram-caption">Diagram alur proses pengolahan sampel setelah diterima di laboratorium</div>
+                    </div>
+
+                    <div class="role-box">
+                        <strong>Role yang Terlibat:</strong>
+                        <ul>
+                            <li><strong>Admin</strong>: Melakukan pengolahan sampel</li>
+                        </ul>
+                    </div>
+
+                    <h4>Alur Proses:</h4>
+                    <div class="process-flow">
+                        <ol>
+                            <li><strong>Mulai</strong> → Sampel diterima di laboratorium</li>
+                            <li><strong>Menganalisa Permohonan Pengujian</strong></li>
+                            <li><strong>Membagi Sampel Berdasarkan Parameter Uji</strong></li>
+                            <li><strong>Parallel Gateway (Split)</strong> → Tiga proses paralel:
+                                <ul>
+                                    <li>Menambahkan Bahan</li>
+                                    <li>Mendinginkan Sampel</li>
+                                    <li>Menyimpan Sampel</li>
+                                </ul>
+                            </li>
+                            <li><strong>Parallel Gateway (Join)</strong> - Semua proses selesai</li>
+                            <li><strong>Pengolahan Sample</strong> (Message End Event)</li>
+                            <li><strong>Selesai</strong></li>
+                        </ol>
+                    </div>
+
+                    <div class="output-box">
+                        <strong>Output:</strong>
+                        <ul>
+                            <li>Sampel yang telah diolah dan siap untuk pengujian</li>
+                            <li>Sampel yang telah dibagi sesuai parameter</li>
+                            <li>Sampel yang telah disimpan dengan kondisi yang tepat</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="process-7">
+                    <h3>7. Penanganan Sampel</h3>
+                    <p><strong>Deskripsi</strong>: Proses penanganan sampel dari penerimaan hingga verifikasi LHU, melibatkan multiple role dengan quality control di setiap tahap.</p>
+                    
+                    <div class="diagram-container">
+                        <div class="diagram-title">Business Process Penanganan Sampel</div>
+                        <img src="diagrams/process-7-penanganan-sampel.png" 
+                             alt="Business Process Penanganan Sampel - SALIMS" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="diagram-placeholder" style="display: none;">
+                            Diagram: Business Process Penanganan Sampel<br>
+                            <small>Simpan diagram dengan nama <code>process-7-penanganan-sampel.png</code> di folder <code>diagrams/</code></small>
+                        </div>
+                        <div class="diagram-caption">Diagram alur proses penanganan sampel dari penerimaan hingga verifikasi LHU</div>
+                    </div>
+
+                    <div class="role-box">
+                        <strong>Role yang Terlibat:</strong>
+                        <ul>
+                            <li><strong>PPS</strong>: Pengambilan sampel</li>
+                            <li><strong>Manager Teknis</strong>: Menerima sampel, verifikasi LHU</li>
+                            <li><strong>Penyelia (Supervisor)</strong>: Konfirmasi pengolahan dan hasil uji</li>
+                            <li><strong>Analis</strong>: Persiapan dan pelaksanaan pengujian</li>
+                            <li><strong>Admin</strong>: Pengolahan sampel dan penerimaan LHU</li>
+                        </ul>
+                    </div>
+
+                    <h4>Alur Proses:</h4>
+                    <h5>Fase 1: Penerimaan dan Pengolahan</h5>
+                    <div class="process-flow">
+                        <ol>
+                            <li><strong>Jadwal Pengambilan Sampel</strong> (Timer Start Event)</li>
+                            <li><strong>Pengambilan Sampel</strong> (Sub-process)</li>
+                            <li><strong>Contoh Uji Diterima</strong> (Message Catching Event)</li>
+                            <li><strong>Menerima Contoh Uji (Disposisi Teknis)</strong> (Manager Teknis)</li>
+                            <li><strong>Pengolahan Sampel</strong> (Sub-process, Admin)</li>
+                            <li><strong>Sample Handling (Penanganan Sampel)</strong>
+                                <div class="note-box" style="margin-top: 0.5rem; background: #e7f3ff; border-left-color: #2196F3;">
+                                    <strong>📱 Implementasi Sistem:</strong> Form "Sample Handling" di modul Sample Handling<br>
+                                    <small>
+                                        <strong>Sample Handling Details:</strong>
+                                        <ul style="margin-top: 0.25rem; margin-left: 1.5rem;">
+                                            <li>SS Number (Sample Handling Number), SS Date, Period</li>
+                                            <li>SR Number (Sample Registration Number) - Relasi dengan Sample Registration</li>
+                                            <li>Sample Code, Sample No, Sample Version</li>
+                                            <li>Labour Code - Kode tenaga kerja yang menangani sampel</li>
+                                            <li>Description</li>
+                                        </ul>
+                                        <strong>Section DETAILS:</strong> Detail pengujian yang akan dilakukan:
+                                        <ul style="margin-top: 0.25rem; margin-left: 1.5rem;">
+                                            <li>Test ID - ID pengujian</li>
+                                            <li>Unit Code - Kode satuan</li>
+                                            <li>Quantity - Jumlah</li>
+                                            <li>Description - Deskripsi detail</li>
+                                            <li>Parameter Code - Kode parameter yang akan diuji</li>
+                                        </ul>
+                                    </small>
+                                </div>
+                                
+                                <!-- Screenshot Sample Handling -->
+                                <div style="margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border: 1px solid #dee2e6;">
+                                    <h5 style="margin-bottom: 0.75rem; color: #495057;">📸 Screenshot: Form Sample Handling</h5>
+                                    <!-- Ganti src dengan path gambar Anda atau gunakan base64 -->
+                                    <img src="images/sample-handling-form.png" 
+                                         alt="Form Sample Handling - SALIMS" 
+                                         style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"
+                                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <div style="display: none; padding: 2rem; text-align: center; color: #6c757d; background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 4px;">
+                                        <p>⚠️ Gambar tidak ditemukan. Silakan:</p>
+                                        <ol style="text-align: left; display: inline-block; margin-top: 0.5rem;">
+                                            <li>Simpan screenshot dengan nama <code>sample-handling-form.png</code></li>
+                                            <li>Letakkan di folder <code>images/</code> relatif terhadap file HTML ini</li>
+                                            <li>Atau ganti path <code>src</code> pada tag img di atas</li>
+                                        </ol>
+                                    </div>
+                                    <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #6c757d;">
+                                        <strong>Catatan:</strong> Form ini digunakan untuk mencatat penanganan sampel setelah diterima di laboratorium, termasuk detail pengujian yang akan dilakukan untuk setiap parameter
+                                    </p>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <h5>Fase 2: Konfirmasi Pengolahan</h5>
+                    <div class="process-flow">
+                        <ol>
+                            <li><strong>Mengkonfirmasi Pengolahan Sampel</strong> (Penyelia)</li>
+                            <li><strong>Decision: Memenuhi Syarat?</strong>
+                                <ul>
+                                    <li><strong>Tidak</strong>: Hasil Pengujian External Diterima</li>
+                                    <li><strong>Ya</strong>: Lanjut ke Persiapan Pengujian</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <h5>Fase 3: Pengujian</h5>
+                    <div class="process-flow">
+                        <ol>
+                            <li><strong>Persiapan Pengujian</strong> (Sub-process, Analis)</li>
+                            <li><strong>Melakukan Pengujian dan/atau Mencatat Hasil Pengujian</strong> (Analis)
+                                <div class="note-box" style="margin-top: 0.5rem; background: #e7f3ff; border-left-color: #2196F3;">
+                                    <strong>📱 Implementasi Sistem:</strong> Form "Sample Proses" (Testing Process) di modul Sample Handling<br>
+                                    <small>
+                                        <strong>Process Details:</strong>
+                                        <ul style="margin-top: 0.25rem; margin-left: 1.5rem;">
+                                            <li>Branch Code, Period, Process Date</li>
+                                            <li>SR Number (Sample Registration Number) - Relasi dengan Sample Registration</li>
+                                            <li>SS Number (Sample Handling Number) - Relasi dengan Sample Handling</li>
+                                            <li>Test ID - ID pengujian yang akan dilakukan</li>
+                                            <li>Execute Date - Tanggal pelaksanaan pengujian</li>
+                                            <li>Duration - Durasi pengujian</li>
+                                            <li>Metspec - Spesifikasi metode pengujian</li>
+                                            <li>Description</li>
+                                        </ul>
+                                        <strong>Section PRODUCTS:</strong> Produk/bahan yang digunakan dalam pengujian:
+                                        <ul style="margin-top: 0.25rem; margin-left: 1.5rem;">
+                                            <li>Product Code, Product Version, Unit Code</li>
+                                            <li>Batch No - Nomor batch produk</li>
+                                            <li>Warehouse Code, Location Code - Lokasi penyimpanan</li>
+                                            <li>Product Qty, Product Qty Use - Jumlah produk yang digunakan</li>
+                                            <li>Exp Date - Tanggal kadaluarsa</li>
+                                        </ul>
+                                        <strong>Section LABOUR:</strong> Tenaga kerja yang terlibat (Labour Code, Hold Duration)<br>
+                                        <strong>Section FORMULAS:</strong> Formula pengujian (Formula Code, Version, Formula Result, L Spec, U Spec, Parameter, Parameter Result)<br>
+                                        <strong>Section EQUIPMENT:</strong> Peralatan yang digunakan (Equipment Code, Version, Due Date Calibration, Hold Duration)
+                                    </small>
+                                </div>
+                                
+                                <!-- Screenshot Sample Proses -->
+                                <div style="margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border: 1px solid #dee2e6;">
+                                    <h5 style="margin-bottom: 0.75rem; color: #495057;">📸 Screenshot: Form Sample Proses (Testing Process)</h5>
+                                    <!-- Ganti src dengan path gambar Anda atau gunakan base64 -->
+                                    <img src="images/sample-proses-form.png" 
+                                         alt="Form Sample Proses - SALIMS" 
+                                         style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"
+                                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <div style="display: none; padding: 2rem; text-align: center; color: #6c757d; background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 4px;">
+                                        <p>⚠️ Gambar tidak ditemukan. Silakan:</p>
+                                        <ol style="text-align: left; display: inline-block; margin-top: 0.5rem;">
+                                            <li>Simpan screenshot dengan nama <code>sample-proses-form.png</code></li>
+                                            <li>Letakkan di folder <code>images/</code> relatif terhadap file HTML ini</li>
+                                            <li>Atau ganti path <code>src</code> pada tag img di atas</li>
+                                        </ol>
+                                    </div>
+                                    <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #6c757d;">
+                                        <strong>Catatan:</strong> Form ini digunakan untuk mencatat proses pengujian sampel, termasuk produk yang digunakan, tenaga kerja, formula pengujian, dan peralatan yang diperlukan
+                                    </p>
+                                </div>
+                            </li>
+                            <li><strong>Mengkonfirmasi Hasil Uji</strong> (Penyelia)</li>
+                            <li><strong>Decision: Memenuhi Syarat?</strong>
+                                <ul>
+                                    <li><strong>Tidak</strong>: Kembali ke pengujian (re-test)</li>
+                                    <li><strong>Ya</strong>: Lanjut ke verifikasi LHU</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <h5>Fase 4: Verifikasi LHU</h5>
+                    <div class="process-flow">
+                        <ol>
+                            <li><strong>Sample Autorize (Otorisasi Sampel / Testing Review)</strong>
+                                <div class="note-box" style="margin-top: 0.5rem; background: #e7f3ff; border-left-color: #2196F3;">
+                                    <strong>📱 Implementasi Sistem:</strong> Form "Sample Autorize" (Testing Review) di modul Sample Handling<br>
+                                    <small>
+                                        <strong>Review Details:</strong>
+                                        <ul style="margin-top: 0.25rem; margin-left: 1.5rem;">
+                                            <li>Branch Code, Review Date, Period</li>
+                                            <li>SR Number (Sample Registration Number) - Relasi dengan Sample Registration</li>
+                                            <li>Product Code - Kode produk yang diuji</li>
+                                            <li>Description</li>
+                                        </ul>
+                                        <strong>Section Review Details:</strong> Detail review untuk setiap proses pengujian:
+                                        <ul style="margin-top: 0.25rem; margin-left: 1.5rem;">
+                                            <li>Process Number - Nomor proses pengujian (dari Sample Proses)</li>
+                                            <li>Description - Deskripsi review</li>
+                                            <li>Is Taken - Status apakah hasil sudah diambil/disetujui</li>
+                                        </ul>
+                                        Form ini digunakan untuk melakukan review dan otorisasi hasil pengujian sebelum LHU diterbitkan. Setiap proses pengujian direview dan disetujui sebelum lanjut ke verifikasi LHU.
+                                    </small>
+                                </div>
+                                
+                                <!-- Screenshot Sample Autorize -->
+                                <div style="margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border: 1px solid #dee2e6;">
+                                    <h5 style="margin-bottom: 0.75rem; color: #495057;">📸 Screenshot: Form Sample Autorize (Testing Review)</h5>
+                                    <!-- Ganti src dengan path gambar Anda atau gunakan base64 -->
+                                    <img src="images/sample-autorize-form.png" 
+                                         alt="Form Sample Autorize - SALIMS" 
+                                         style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"
+                                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <div style="display: none; padding: 2rem; text-align: center; color: #6c757d; background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 4px;">
+                                        <p>⚠️ Gambar tidak ditemukan. Silakan:</p>
+                                        <ol style="text-align: left; display: inline-block; margin-top: 0.5rem;">
+                                            <li>Simpan screenshot dengan nama <code>sample-autorize-form.png</code></li>
+                                            <li>Letakkan di folder <code>images/</code> relatif terhadap file HTML ini</li>
+                                            <li>Atau ganti path <code>src</code> pada tag img di atas</li>
+                                        </ol>
+                                    </div>
+                                    <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #6c757d;">
+                                        <strong>Catatan:</strong> Form ini digunakan untuk melakukan review dan otorisasi hasil pengujian. Setiap proses pengujian (Process Number) direview dan disetujui sebelum lanjut ke verifikasi LHU
+                                    </p>
+                                </div>
+                            </li>
+                            <li><strong>Verifikasi LHU</strong> (Manager Teknis)</li>
+                            <li><strong>Decision: Memenuhi Syarat?</strong>
+                                <ul>
+                                    <li><strong>Tidak</strong>: Kembali ke pengujian (re-test)</li>
+                                    <li><strong>Ya</strong>: Menerima LHU (Admin)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Selesai</strong></li>
+                        </ol>
+                    </div>
+
+                    <div class="note-box">
+                        <strong>Quality Control Points:</strong>
+                        <ul>
+                            <li>Konfirmasi Pengolahan Sampel (Penyelia)</li>
+                            <li>Konfirmasi Hasil Uji (Penyelia)</li>
+                            <li>Verifikasi LHU (Manager Teknis)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="process-8">
+                    <h3>8. Persiapan Pengujian</h3>
+                    <p><strong>Deskripsi</strong>: Proses persiapan sebelum pengujian dimulai, termasuk persiapan peralatan, bahan uji, konfirmasi penggunaan, dan kalibrasi jika diperlukan.</p>
+                    
+                    <div class="diagram-container">
+                        <div class="diagram-title">Business Process Persiapan Pengujian</div>
+                        <img src="diagrams/process-8-persiapan-pengujian.png" 
+                             alt="Business Process Persiapan Pengujian - SALIMS" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="diagram-placeholder" style="display: none;">
+                            Diagram: Business Process Persiapan Pengujian<br>
+                            <small>Simpan diagram dengan nama <code>process-8-persiapan-pengujian.png</code> di folder <code>diagrams/</code></small>
+                        </div>
+                        <div class="diagram-caption">Diagram alur proses persiapan sebelum pengujian dimulai</div>
+                    </div>
+
+                    <div class="role-box">
+                        <strong>Role yang Terlibat:</strong>
+                        <ul>
+                            <li><strong>Analis</strong>: Melakukan persiapan peralatan, bahan uji, dan kalibrasi</li>
+                            <li><strong>Admin Persediaan</strong>: Mengkonfirmasi penggunaan peralatan dan bahan uji</li>
+                        </ul>
+                    </div>
+
+                    <h4>Alur Proses:</h4>
+                    <div class="process-flow">
+                        <ol>
+                            <li><strong>Skedul Pengambilan Sampel</strong> (Timer Start Event)</li>
+                            <li><strong>Mengecek Permintaan Pengambilan Sampel Uji</strong></li>
+                            <li><strong>Parallel Gateway (Split)</strong> → Dua persiapan paralel:
+                                <ul>
+                                    <li>Melakukan Persiapan Peralatan Uji</li>
+                                    <li>Melakukan Persiapan Bahan Uji</li>
+                                </ul>
+                            </li>
+                            <li><strong>Mengkonfirmasi Penggunaan Peralatan dan Bahan Uji</strong> (Admin Persediaan)</li>
+                            <li><strong>Decision: Perlu Dikalibrasi?</strong>
+                                <ul>
+                                    <li><strong>Ya</strong>: Melakukan Kalibrasi</li>
+                                    <li><strong>Tidak</strong>: Langsung ke Selesai</li>
+                                </ul>
+                            </li>
+                            <li><strong>Selesai</strong></li>
+                        </ol>
+                    </div>
+
+                    <div class="output-box">
+                        <strong>Output:</strong>
+                        <ul>
+                            <li>Peralatan siap digunakan</li>
+                            <li>Bahan uji siap digunakan</li>
+                            <li>Peralatan terkalibrasi (jika diperlukan)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="process-9">
+                    <h3>9. Penerbitan LHU</h3>
+                    <p><strong>Deskripsi</strong>: Proses penerbitan LHU (Laporan Hasil Uji) yang melibatkan verifikasi pembayaran, kalkulasi biaya (jika diperlukan), penerbitan tagihan, konfirmasi pembayaran, dan pengiriman LHU kepada pelanggan.</p>
+                    
+                    <div class="diagram-container">
+                        <div class="diagram-title">Business Process Penerbitan LHU</div>
+                        <img src="diagrams/process-9-penerbitan-lhu.png" 
+                             alt="Business Process Penerbitan LHU - SALIMS" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="diagram-placeholder" style="display: none;">
+                            Diagram: Business Process Penerbitan LHU<br>
+                            <small>Simpan diagram dengan nama <code>process-9-penerbitan-lhu.png</code> di folder <code>diagrams/</code></small>
+                        </div>
+                        <div class="diagram-caption">Diagram alur proses penerbitan LHU (Laporan Hasil Uji)</div>
+                    </div>
+
+                    <div class="role-box">
+                        <strong>Role yang Terlibat:</strong>
+                        <ul>
+                            <li><strong>Admin</strong>: Mengecek pembayaran, mengkalkulasi biaya, menerbitkan tagihan, mengkonfirmasi pembayaran, memberikan LHU hard copy</li>
+                            <li><strong>Pelanggan</strong>: Mengakses portal, mengecek status, melakukan pembayaran, mengisi feedback, mengunduh LHU soft copy</li>
+                            <li><strong>Data Integration (API CIS)</strong>: Menyediakan data pembayaran</li>
+                        </ul>
+                    </div>
+
+                    <h4>Alur Proses - Path Admin:</h4>
+                    <div class="process-flow">
+                        <ol>
+                            <li><strong>Mulai</strong> → Admin memulai proses</li>
+                            <li><strong>Melakukan Pengecekan Data Pembayaran</strong></li>
+                            <li><strong>Decision: Pelanggan MoU (Pasca-Bayar) dan Ditemukan Biaya?</strong>
+                                <ul>
+                                    <li><strong>Ya</strong>: Mengkalkulasi Biaya Pengujian → Menerbitkan Tagihan</li>
+                                    <li><strong>Tidak</strong>: Langsung ke Menerbitkan Tagihan</li>
+                                </ul>
+                            </li>
+                            <li><strong>Menkonfirmasi Pembayaran</strong> (Trigger dari Pelanggan)</li>
+                            <li><strong>Melakukan Pencarian Data Pembayaran</strong></li>
+                            <li><strong>Decision: Data Ditemukan?</strong>
+                                <ul>
+                                    <li><strong>Tidak</strong>: Kembali ke langkah 4</li>
+                                    <li><strong>Ya</strong>: Menerima Data Pembayaran (dari API CIS)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Decision: Data Feedback Ditemukan?</strong>
+                                <ul>
+                                    <li><strong>Tidak</strong>: Mengisi Feedback</li>
+                                    <li><strong>Ya</strong>: Langsung ke langkah berikutnya</li>
+                                </ul>
+                            </li>
+                            <li><strong>Menerima LHU (Hard Copy)</strong></li>
+                            <li><strong>Selesai</strong></li>
+                        </ol>
+                    </div>
+
+                    <h4>Alur Proses - Path Pelanggan:</h4>
+                    <div class="process-flow">
+                        <ol>
+                            <li><strong>Mulai</strong> → Pelanggan memulai proses</li>
+                            <li><strong>Mengakses Portal Pelanggan</strong></li>
+                            <li><strong>Decision: Status Pengujian Selesai?</strong>
+                                <ul>
+                                    <li><strong>Tidak</strong>: Kembali ke langkah 2</li>
+                                    <li><strong>Ya</strong>: Pengecekan Data Pembayaran</li>
+                                </ul>
+                            </li>
+                            <li><strong>Decision: Data Pembayaran Ditemukan?</strong>
+                                <ul>
+                                    <li><strong>Tidak</strong>: Melakukan Pembayaran → Kembali ke langkah 3</li>
+                                    <li><strong>Ya</strong>: Decision: Data Feedback Ditemukan?</li>
+                                </ul>
+                            </li>
+                            <li><strong>Decision: Data Feedback Ditemukan?</strong>
+                                <ul>
+                                    <li><strong>Tidak</strong>: Mengisi Feedback</li>
+                                    <li><strong>Ya</strong>: Langsung ke langkah berikutnya</li>
+                                </ul>
+                            </li>
+                            <li><strong>Mengunduh LHU (Soft Copy)</strong></li>
+                            <li><strong>Selesai</strong></li>
+                        </ol>
+                    </div>
+
+                    <div class="output-box">
+                        <strong>Output:</strong>
+                        <ul>
+                            <li>Tagihan (jika diperlukan)</li>
+                            <li>Konfirmasi pembayaran</li>
+                            <li>LHU Hard Copy (untuk Admin)</li>
+                            <li>LHU Soft Copy (untuk Pelanggan)</li>
+                            <li>Feedback (jika diisi)</li>
+                        </ul>
+                    </div>
+
+                    <h4>Form Laporan:</h4>
+                    <div class="process-flow">
+                        <h5>Print Form LHU (Laporan Hasil Uji)</h5>
+                        <div class="note-box" style="margin-top: 0.5rem; background: #e7f3ff; border-left-color: #2196F3;">
+                            <strong>📱 Implementasi Sistem:</strong> Form "Print Form LHU" di modul LAPORAN<br>
+                            <small>
+                                <strong>Fungsi:</strong> Form ini digunakan untuk mencetak dan melihat preview Laporan Hasil Uji (LHU), termasuk:
+                                <ul style="margin-top: 0.25rem; margin-left: 1.5rem;">
+                                    <li>Nomor Laporan - Nomor laporan hasil uji</li>
+                                    <li>Judul Pengujian - Judul atau jenis pengujian yang dilakukan</li>
+                                    <li>Informasi Laboratorium - Logo, nama, alamat, dan kontak laboratorium</li>
+                                    <li>Informasi Pelanggan - Nama dan alamat pelanggan</li>
+                                    <li>Informasi Sampel - Kode contoh uji, metode pengambilan, tanggal pengambilan</li>
+                                    <li>Informasi Analisa - Tempat analisa, tanggal analisa</li>
+                                    <li>Tabel Hasil Pengujian - Parameter, satuan, standar maksimal, hasil, limit deteksi, metode analisa, keterangan</li>
+                                </ul>
+                                Form ini menghasilkan LHU yang berisi informasi lengkap tentang hasil pengujian sampel, termasuk semua parameter yang diuji beserta hasilnya. LHU ini dapat dicetak sebagai hard copy atau diunduh sebagai soft copy.
+                            </small>
+                        </div>
+                        
+                        <!-- Screenshot Print Form LHU -->
+                        <div style="margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border: 1px solid #dee2e6;">
+                            <h5 style="margin-bottom: 0.75rem; color: #495057;">📸 Screenshot: Form Print Form LHU</h5>
+                            <!-- Ganti src dengan path gambar Anda atau gunakan base64 -->
+                            <img src="images/print-form-lhu.png" 
+                                 alt="Form Print Form LHU - SALIMS" 
+                                 style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <div style="display: none; padding: 2rem; text-align: center; color: #6c757d; background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 4px;">
+                                <p>⚠️ Gambar tidak ditemukan. Silakan:</p>
+                                <ol style="text-align: left; display: inline-block; margin-top: 0.5rem;">
+                                    <li>Simpan screenshot dengan nama <code>print-form-lhu.png</code></li>
+                                    <li>Letakkan di folder <code>images/</code> relatif terhadap file HTML ini</li>
+                                    <li>Atau ganti path <code>src</code> pada tag img di atas</li>
+                                </ol>
+                            </div>
+                            <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #6c757d;">
+                                <strong>Catatan:</strong> Form ini digunakan untuk mencetak dan melihat preview Laporan Hasil Uji (LHU). LHU berisi informasi lengkap tentang hasil pengujian sampel.
+                            </p>
+                        </div>
+                    </div>
+
+                    <h4>Laporan Air Baku:</h4>
+                    <div class="process-flow">
+                        <h5>Laporan Air Baku (Raw Water Report)</h5>
+                        <div class="note-box" style="margin-top: 0.5rem; background: #e7f3ff; border-left-color: #2196F3;">
+                            <strong>📱 Implementasi Sistem:</strong> Form "Laporan Air Baku" di modul LAPORAN<br>
+                            <small>
+                                <strong>Fungsi:</strong> Form ini digunakan untuk membuat dan mencetak laporan pengujian kualitas air permukaan, termasuk:
+                                <ul style="margin-top: 0.25rem; margin-left: 1.5rem;">
+                                    <li>Filter Customer - Filter berdasarkan pelanggan</li>
+                                    <li>Range Tanggal - Filter berdasarkan tanggal mulai dan tanggal akhir</li>
+                                    <li>Informasi Laporan - Nomor laporan, judul pengujian (contoh: "Pengujian kualitas air permukaan IPAM Ngagel")</li>
+                                    <li>Informasi Pelanggan - Nama dan alamat pelanggan</li>
+                                    <li>Informasi Sampel - Kode contoh uji, metode pengambilan, tanggal pengambilan</li>
+                                    <li>Informasi Analisa - Tempat analisa, tanggal analisa</li>
+                                    <li>Tabel Hasil Pengujian - Parameter (TDS, Kesadahan, Magnesium, Chlorida, dll), satuan, standar maksimal, hasil, limit deteksi, metode analisa, keterangan</li>
+                                </ul>
+                                Form ini khusus digunakan untuk laporan pengujian kualitas air permukaan yang dilakukan secara berkala (bulanan). Laporan ini membantu dalam monitoring kualitas air baku di IPAM (Instalasi Pengolahan Air Minum).
+                            </small>
+                        </div>
+                        
+                        <!-- Screenshot Laporan Air Baku -->
+                        <div style="margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border: 1px solid #dee2e6;">
+                            <h5 style="margin-bottom: 0.75rem; color: #495057;">📸 Screenshot: Form Laporan Air Baku</h5>
+                            <!-- Ganti src dengan path gambar Anda atau gunakan base64 -->
+                            <img src="images/laporan-air-baku.png" 
+                                 alt="Form Laporan Air Baku - SALIMS" 
+                                 style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <div style="display: none; padding: 2rem; text-align: center; color: #6c757d; background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 4px;">
+                                <p>⚠️ Gambar tidak ditemukan. Silakan:</p>
+                                <ol style="text-align: left; display: inline-block; margin-top: 0.5rem;">
+                                    <li>Simpan screenshot dengan nama <code>laporan-air-baku.png</code></li>
+                                    <li>Letakkan di folder <code>images/</code> relatif terhadap file HTML ini</li>
+                                    <li>Atau ganti path <code>src</code> pada tag img di atas</li>
+                                </ol>
+                            </div>
+                            <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #6c757d;">
+                                <strong>Catatan:</strong> Form ini khusus digunakan untuk laporan pengujian kualitas air permukaan yang dilakukan secara berkala (bulanan). Laporan ini membantu dalam monitoring kualitas air baku di IPAM.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="process-10">
+                    <h3>10. Manajemen Persediaan</h3>
+                    <p><strong>Deskripsi</strong>: Proses manajemen persediaan bahan uji, termasuk stock opname, monitoring batas minimum, rekonsiliasi, dan disposal bahan kadaluarsa.</p>
+                    
+                    <div class="diagram-container">
+                        <div class="diagram-title">Business Process Manajemen Persediaan</div>
+                        <img src="diagrams/process-10-manajemen-persediaan.png" 
+                             alt="Business Process Manajemen Persediaan - SALIMS" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="diagram-placeholder" style="display: none;">
+                            Diagram: Business Process Manajemen Persediaan<br>
+                            <small>Simpan diagram dengan nama <code>process-10-manajemen-persediaan.png</code> di folder <code>diagrams/</code></small>
+                        </div>
+                        <div class="diagram-caption">Diagram alur proses manajemen persediaan bahan uji</div>
+                    </div>
+
+                    <div class="role-box">
+                        <strong>Role yang Terlibat:</strong>
+                        <ul>
+                            <li><strong>Admin Persediaan</strong>: Melakukan stock opname, monitoring, rekonsiliasi, update data</li>
+                            <li><strong>Penyelia (Supervisor)</strong>: Mengkonfirmasi hasil rekonsiliasi</li>
+                        </ul>
+                    </div>
+
+                    <h4>Alur Proses:</h4>
+                    <div class="process-flow">
+                        <ol>
+                            <li><strong>Mulai</strong> → Admin memulai proses</li>
+                            <li><strong>Membuat Daftar Persediaan</strong></li>
+                            <li><strong>Periode StockOpname</strong> (Timer Event)</li>
+                            <li><strong>Parallel Gateway (Split)</strong> → Dua proses paralel:
+                                <ul>
+                                    <li><strong>Path 1: Stock Opname</strong>
+                                        <ul>
+                                            <li>Melakukan Stok Opname</li>
+                                            <li><strong>Decision: Terdapat Perbedaan Data?</strong>
+                                                <ul>
+                                                    <li><strong>Tidak</strong>: Langsung ke Selesai</li>
+                                                    <li><strong>Ya</strong>: Menuju ke Parallel Join</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Path 2: Cek Minimum Inventory</strong>
+                                        <ul>
+                                            <li>Mengecek Batas Minimum Persediaan</li>
+                                            <li><strong>Decision: Terdapat Persediaan yang Mencapai Batas Bawah?</strong>
+                                                <ul>
+                                                    <li><strong>Tidak</strong>: Langsung ke Selesai</li>
+                                                    <li><strong>Ya</strong>: Menuju ke Parallel Join</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><strong>Parallel Gateway (Join)</strong> - Bergabung jika ada perbedaan atau batas bawah</li>
+                            <li><strong>Melakukan Rekap</strong></li>
+                            <li><strong>Mengkonfirmasi Hasil Recap</strong> (Penyelia)</li>
+                            <li><strong>Memperbarui Data Persediaan</strong>
+                                <div class="note-box" style="margin-top: 0.5rem; background: #e7f3ff; border-left-color: #2196F3;">
+                                    <strong>📱 Implementasi Sistem:</strong> Form "Transfer Warehouse" di modul Inventory<br>
+                                    <small>
+                                        <strong>Transfer Details:</strong>
+                                        <ul style="margin-top: 0.25rem; margin-left: 1.5rem;">
+                                            <li>Transaction Index, AD Number (Adjustment Number), AD Date, AD Type</li>
+                                            <li>Branch Code, Period</li>
+                                            <li>Warehouse Code - Warehouse sumber</li>
+                                            <li>Location Code - Lokasi sumber</li>
+                                            <li>Reference Number - Nomor referensi transfer</li>
+                                            <li>Description</li>
+                                            <li>User - User yang melakukan transfer</li>
+                                        </ul>
+                                        Form ini digunakan untuk melakukan transfer persediaan dari satu warehouse ke warehouse lain, termasuk update data persediaan di kedua warehouse (sumber dan tujuan).
+                                    </small>
+                                </div>
+                                
+                                <!-- Screenshot Transfer Warehouse -->
+                                <div style="margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border: 1px solid #dee2e6;">
+                                    <h5 style="margin-bottom: 0.75rem; color: #495057;">📸 Screenshot: Form Transfer Warehouse</h5>
+                                    <!-- Ganti src dengan path gambar Anda atau gunakan base64 -->
+                                    <img src="images/transfer-warehouse-form.png" 
+                                         alt="Form Transfer Warehouse - SALIMS" 
+                                         style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"
+                                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                    <div style="display: none; padding: 2rem; text-align: center; color: #6c757d; background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 4px;">
+                                        <p>⚠️ Gambar tidak ditemukan. Silakan:</p>
+                                        <ol style="text-align: left; display: inline-block; margin-top: 0.5rem;">
+                                            <li>Simpan screenshot dengan nama <code>transfer-warehouse-form.png</code></li>
+                                            <li>Letakkan di folder <code>images/</code> relatif terhadap file HTML ini</li>
+                                            <li>Atau ganti path <code>src</code> pada tag img di atas</li>
+                                        </ol>
+                                    </div>
+                                    <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #6c757d;">
+                                        <strong>Catatan:</strong> Form ini digunakan untuk transfer persediaan antar warehouse, termasuk update data persediaan di warehouse sumber dan tujuan
+                                    </p>
+                                </div>
+                            </li>
+                            <li><strong>Decision: Kadaluarsa?</strong>
+                                <ul>
+                                    <li><strong>Tidak</strong>: Langsung ke Selesai</li>
+                                    <li><strong>Ya</strong>: Disposal Bahan Uji → Selesai</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <h4>Operasi Inventory Tambahan:</h4>
+                    <div class="process-flow">
+                        <h5>Assembly (Perakitan Produk)</h5>
+                        <div class="note-box" style="margin-top: 0.5rem; background: #e7f3ff; border-left-color: #2196F3;">
+                            <strong>📱 Implementasi Sistem:</strong> Form "Assembly" di modul Inventory<br>
+                            <small>
+                                <strong>Assembly Details:</strong>
+                                <ul style="margin-top: 0.25rem; margin-left: 1.5rem;">
+                                    <li>Branch Code, Transaction Index, User Created</li>
+                                    <li>Assembly Number, Period, Assembly Date</li>
+                                    <li>Product Code - Produk hasil perakitan</li>
+                                    <li>BOM Code - Bill of Materials yang digunakan</li>
+                                    <li>Assembly By - Personel yang melakukan perakitan</li>
+                                    <li>Quantity - Jumlah produk yang dirakit</li>
+                                    <li>Expiry Date - Tanggal kadaluarsa produk hasil</li>
+                                    <li>Destination Warehouse Code - Warehouse tujuan</li>
+                                    <li>Destination Location Code - Lokasi tujuan</li>
+                                    <li>Unit Code - Satuan produk</li>
+                                    <li>Description</li>
+                                </ul>
+                                <strong>Section ASSEMBLY DETAIL:</strong> Detail komponen yang digunakan dalam perakitan:
+                                <ul style="margin-top: 0.25rem; margin-left: 1.5rem;">
+                                    <li>Product Version - Versi komponen</li>
+                                    <li>Warehouse Code, Location Code - Lokasi komponen</li>
+                                    <li>Product Code - Kode komponen</li>
+                                    <li>Batch No - Nomor batch komponen</li>
+                                    <li>Unit Code, Unit Code Use - Satuan komponen</li>
+                                    <li>Product Qty - Jumlah komponen yang digunakan</li>
+                                </ul>
+                                Form ini digunakan untuk melakukan perakitan produk dari komponen-komponen berdasarkan BOM (Bill of Materials), termasuk update persediaan komponen dan produk hasil perakitan.
+                            </small>
+                        </div>
+                        
+                        <!-- Screenshot Assembly -->
+                        <div style="margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border: 1px solid #dee2e6;">
+                            <h5 style="margin-bottom: 0.75rem; color: #495057;">📸 Screenshot: Form Assembly</h5>
+                            <!-- Ganti src dengan path gambar Anda atau gunakan base64 -->
+                            <img src="images/assembly-form.png" 
+                                 alt="Form Assembly - SALIMS" 
+                                 style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <div style="display: none; padding: 2rem; text-align: center; color: #6c757d; background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 4px;">
+                                <p>⚠️ Gambar tidak ditemukan. Silakan:</p>
+                                <ol style="text-align: left; display: inline-block; margin-top: 0.5rem;">
+                                    <li>Simpan screenshot dengan nama <code>assembly-form.png</code></li>
+                                    <li>Letakkan di folder <code>images/</code> relatif terhadap file HTML ini</li>
+                                    <li>Atau ganti path <code>src</code> pada tag img di atas</li>
+                                </ol>
+                            </div>
+                            <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #6c757d;">
+                                <strong>Catatan:</strong> Form ini digunakan untuk perakitan produk dari komponen-komponen berdasarkan BOM, termasuk update persediaan komponen dan produk hasil perakitan
+                            </p>
+                        </div>
+                    </div>
+
+                    <h4>Informasi Produk:</h4>
+                    <div class="process-flow">
+                        <h5>Product Information (Informasi Produk)</h5>
+                        <div class="note-box" style="margin-top: 0.5rem; background: #e7f3ff; border-left-color: #2196F3;">
+                            <strong>📱 Implementasi Sistem:</strong> Form "Product Information" di modul Inventory<br>
+                            <small>
+                                <strong>Fungsi:</strong> Form ini digunakan untuk melihat dan mengelola informasi produk di inventory, termasuk:
+                                <ul style="margin-top: 0.25rem; margin-left: 1.5rem;">
+                                    <li>Product Code, Product Name, Product Version</li>
+                                    <li>Product Type, Product Category</li>
+                                    <li>Warehouse Code, Location Code - Lokasi penyimpanan</li>
+                                    <li>Unit Code - Satuan produk</li>
+                                    <li>Batch No - Nomor batch</li>
+                                    <li>Product Qty - Jumlah persediaan</li>
+                                    <li>Exp Date - Tanggal kadaluarsa</li>
+                                    <li>Min Stock - Batas minimum persediaan</li>
+                                    <li>Shelf Life - Masa simpan</li>
+                                    <li>Manufacture Code - Kode pabrikan</li>
+                                    <li>Building Code - Kode gedung</li>
+                                    <li>Description - Deskripsi produk</li>
+                                </ul>
+                                Form ini membantu dalam monitoring dan tracking informasi produk di inventory, termasuk status persediaan, lokasi, dan informasi penting lainnya.
+                            </small>
+                        </div>
+                        
+                        <!-- Screenshot Product Information -->
+                        <div style="margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border: 1px solid #dee2e6;">
+                            <h5 style="margin-bottom: 0.75rem; color: #495057;">📸 Screenshot: Form Product Information</h5>
+                            <!-- Ganti src dengan path gambar Anda atau gunakan base64 -->
+                            <img src="images/product-information-form.png" 
+                                 alt="Form Product Information - SALIMS" 
+                                 style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <div style="display: none; padding: 2rem; text-align: center; color: #6c757d; background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 4px;">
+                                <p>⚠️ Gambar tidak ditemukan. Silakan:</p>
+                                <ol style="text-align: left; display: inline-block; margin-top: 0.5rem;">
+                                    <li>Simpan screenshot dengan nama <code>product-information-form.png</code></li>
+                                    <li>Letakkan di folder <code>images/</code> relatif terhadap file HTML ini</li>
+                                    <li>Atau ganti path <code>src</code> pada tag img di atas</li>
+                                </ol>
+                            </div>
+                            <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #6c757d;">
+                                <strong>Catatan:</strong> Form ini digunakan untuk melihat dan mengelola informasi produk di inventory, membantu dalam monitoring dan tracking persediaan
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="output-box">
+                        <strong>Output:</strong>
+                        <ul>
+                            <li>Daftar persediaan terbaru</li>
+                            <li>Hasil stock opname</li>
+                            <li>Data rekonsiliasi</li>
+                            <li>Data persediaan yang diperbarui</li>
+                            <li>Bahan kadaluarsa yang telah didisposal</li>
+                            <li>Produk hasil perakitan (Assembly)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="process-11">
+                    <h3>11. Manajemen Aset</h3>
+                    <p><strong>Deskripsi</strong>: Proses manajemen aset peralatan laboratorium, termasuk pemeliharaan rutin dan kalibrasi peralatan.</p>
+                    
+                    <div class="diagram-container">
+                        <div class="diagram-title">Business Process Manajemen Aset</div>
+                        <img src="diagrams/process-11-manajemen-aset.png" 
+                             alt="Business Process Manajemen Aset - SALIMS" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="diagram-placeholder" style="display: none;">
+                            Diagram: Business Process Manajemen Aset<br>
+                            <small>Simpan diagram dengan nama <code>process-11-manajemen-aset.png</code> di folder <code>diagrams/</code></small>
+                        </div>
+                        <div class="diagram-caption">Diagram alur proses manajemen aset peralatan laboratorium</div>
+                    </div>
+
+                    <div class="role-box">
+                        <strong>Role yang Terlibat:</strong>
+                        <ul>
+                            <li><strong>Analis</strong>: Membuat daftar peralatan, jadwal pemeliharaan, melakukan pemeriksaan dan pemeliharaan, membuat laporan kerusakan, membuat riwayat peralatan</li>
+                            <li><strong>Manajemen Aset Supervisor</strong>: Membuat program kalibrasi, mengajukan permintaan kalibrasi, melakukan pemutakhiran data peralatan</li>
+                            <li><strong>Manajer Lab</strong>: Mengkonfirmasi permintaan kalibrasi</li>
+                            <li><strong>Internal/External Kalibrasi</strong>: Melakukan kalibrasi peralatan</li>
+                        </ul>
+                    </div>
+
+                    <h4>Alur Proses - Process 1: Equipment Maintenance</h4>
+                    <div class="process-flow">
+                        <ol>
+                            <li><strong>Mulai</strong> → Analis memulai proses</li>
+                            <li><strong>Membuat Daftar Peralatan</strong></li>
+                            <li><strong>Membuat Jadwal Pemeliharaan</strong></li>
+                            <li><strong>Jadwal Pemeriksaan dan Pemeliharaan</strong> (Data Store)</li>
+                            <li><strong>Melakukan Pemeriksaan dan Pemeliharaan</strong></li>
+                            <li><strong>Decision: Alat Rusak?</strong>
+                                <ul>
+                                    <li><strong>Ya</strong>: Membuat Laporan Kerusakan → Update Status Peralatan → Selesai</li>
+                                    <li><strong>Tidak</strong>: Membuat Riwayat Peralatan → Selesai</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <h4>Maintenance Request (Permintaan Pemeliharaan):</h4>
+                    <div class="process-flow">
+                        <h5>Maintenance Request Form</h5>
+                        <div class="note-box" style="margin-top: 0.5rem; background: #e7f3ff; border-left-color: #2196F3;">
+                            <strong>📱 Implementasi Sistem:</strong> Form "Maintenance Request" di modul Equipment Maintenance<br>
+                            <small>
+                                <strong>Fungsi:</strong> Form ini digunakan untuk membuat permintaan pemeliharaan peralatan, termasuk:
+                                <ul style="margin-top: 0.25rem; margin-left: 1.5rem;">
+                                    <li>MR Number - Nomor permintaan pemeliharaan (auto-generate atau manual)</li>
+                                    <li>Branch Code - Kode cabang</li>
+                                    <li>Period - Periode transaksi</li>
+                                    <li>MR Date - Tanggal permintaan pemeliharaan</li>
+                                    <li>Equipment Code - Kode peralatan yang akan dipelihara</li>
+                                    <li>Equipment Version - Versi peralatan</li>
+                                    <li>Description - Deskripsi permintaan pemeliharaan (alasan, detail kerusakan, dll)</li>
+                                    <li>User Created - User yang membuat permintaan</li>
+                                    <li>Transaction Status - Status transaksi</li>
+                                    <li>Approval Status - Status persetujuan</li>
+                                    <li>Is Auto No - Flag untuk auto-generate nomor</li>
+                                </ul>
+                                Form ini merupakan langkah awal dalam proses pemeliharaan peralatan. Setelah maintenance request dibuat, akan dilanjutkan ke proses maintenance process untuk eksekusi pemeliharaan.
+                            </small>
+                        </div>
+                        
+                        <!-- Screenshot Maintenance Request -->
+                        <div style="margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border: 1px solid #dee2e6;">
+                            <h5 style="margin-bottom: 0.75rem; color: #495057;">📸 Screenshot: Form Maintenance Request</h5>
+                            <!-- Ganti src dengan path gambar Anda atau gunakan base64 -->
+                            <img src="images/maintenance-request-form.png" 
+                                 alt="Form Maintenance Request - SALIMS" 
+                                 style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <div style="display: none; padding: 2rem; text-align: center; color: #6c757d; background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 4px;">
+                                <p>⚠️ Gambar tidak ditemukan. Silakan:</p>
+                                <ol style="text-align: left; display: inline-block; margin-top: 0.5rem;">
+                                    <li>Simpan screenshot dengan nama <code>maintenance-request-form.png</code></li>
+                                    <li>Letakkan di folder <code>images/</code> relatif terhadap file HTML ini</li>
+                                    <li>Atau ganti path <code>src</code> pada tag img di atas</li>
+                                </ol>
+                            </div>
+                            <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #6c757d;">
+                                <strong>Catatan:</strong> Form ini digunakan untuk membuat permintaan pemeliharaan peralatan. Setelah dibuat, maintenance request akan dilanjutkan ke proses maintenance process untuk eksekusi pemeliharaan.
+                            </p>
+                        </div>
+                    </div>
+
+                    <h4>Maintenance Process (Proses Pemeliharaan):</h4>
+                    <div class="process-flow">
+                        <h5>Maintenance Process Form</h5>
+                        <div class="note-box" style="margin-top: 0.5rem; background: #e7f3ff; border-left-color: #2196F3;">
+                            <strong>📱 Implementasi Sistem:</strong> Form "Maintenance Process" di modul Equipment Maintenance<br>
+                            <small>
+                                <strong>Fungsi:</strong> Form ini digunakan untuk mengeksekusi proses pemeliharaan peralatan berdasarkan Maintenance Request yang telah dibuat, termasuk:
+                                <ul style="margin-top: 0.25rem; margin-left: 1.5rem;">
+                                    <li>MP Number - Nomor proses pemeliharaan (auto-generate atau manual)</li>
+                                    <li>Branch Code - Kode cabang</li>
+                                    <li>Period - Periode transaksi</li>
+                                    <li>MP Date - Tanggal proses pemeliharaan</li>
+                                    <li>Maintenance Request - Referensi ke Maintenance Request yang akan diproses (MR Number)</li>
+                                    <li>Status - Status proses pemeliharaan (dalam proses, selesai, dll)</li>
+                                    <li>Description - Deskripsi proses pemeliharaan yang dilakukan (tindakan yang diambil, hasil pemeriksaan, dll)</li>
+                                    <li>User Created - User yang membuat proses pemeliharaan</li>
+                                    <li>Transaction Status - Status transaksi</li>
+                                    <li>Approval Status - Status persetujuan</li>
+                                    <li>Is Auto No - Flag untuk auto-generate nomor</li>
+                                </ul>
+                                Form ini merupakan langkah eksekusi dari Maintenance Request. Setelah maintenance request dibuat, maintenance process digunakan untuk mencatat dan mengeksekusi tindakan pemeliharaan yang dilakukan pada peralatan.
+                            </small>
+                        </div>
+                        
+                        <!-- Screenshot Maintenance Process -->
+                        <div style="margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border: 1px solid #dee2e6;">
+                            <h5 style="margin-bottom: 0.75rem; color: #495057;">📸 Screenshot: Form Maintenance Process</h5>
+                            <!-- Ganti src dengan path gambar Anda atau gunakan base64 -->
+                            <img src="images/maintenance-process-form.png" 
+                                 alt="Form Maintenance Process - SALIMS" 
+                                 style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <div style="display: none; padding: 2rem; text-align: center; color: #6c757d; background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 4px;">
+                                <p>⚠️ Gambar tidak ditemukan. Silakan:</p>
+                                <ol style="text-align: left; display: inline-block; margin-top: 0.5rem;">
+                                    <li>Simpan screenshot dengan nama <code>maintenance-process-form.png</code></li>
+                                    <li>Letakkan di folder <code>images/</code> relatif terhadap file HTML ini</li>
+                                    <li>Atau ganti path <code>src</code> pada tag img di atas</li>
+                                </ol>
+                            </div>
+                            <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #6c757d;">
+                                <strong>Catatan:</strong> Form ini digunakan untuk mengeksekusi proses pemeliharaan peralatan berdasarkan Maintenance Request. Form ini mencatat tindakan pemeliharaan yang dilakukan dan hasil pemeriksaan peralatan.
+                            </p>
+                        </div>
+                    </div>
+
+                    <h4>Alur Proses - Process 2: Equipment Calibration</h4>
+                    <div class="process-flow">
+                        <ol>
+                            <li><strong>Mulai</strong> → Manajemen Aset Supervisor memulai proses</li>
+                            <li><strong>Membuat Program Kalibrasi</strong></li>
+                            <li><strong>Jadwal Kalibrasi</strong> (Data Store)</li>
+                            <li><strong>Mengajukan Permintaan Kalibrasi</strong></li>
+                            <li><strong>Mengkonfirmasi Permintaan Kalibrasi</strong> (Manajer Lab)</li>
+                            <li><strong>Melakukan Kalibrasi</strong> (Internal/External Kalibrasi)</li>
+                            <li><strong>Laporan Kalibrasi</strong> (Message Flow)</li>
+                            <li><strong>Melakukan Pemutakhiran Data Peralatan</strong> (Manajemen Aset Supervisor)</li>
+                            <li><strong>Selesai</strong></li>
+                        </ol>
+                    </div>
+
+
+                    <div class="output-box">
+                        <strong>Output:</strong>
+                        <ul>
+                            <li>Daftar peralatan</li>
+                            <li>Jadwal pemeliharaan</li>
+                            <li>Riwayat pemeliharaan</li>
+                            <li>Laporan kerusakan (jika ada)</li>
+                            <li>Status peralatan terbaru</li>
+                            <li>Program kalibrasi</li>
+                            <li>Jadwal kalibrasi</li>
+                            <li>Laporan kalibrasi</li>
+                            <li>Data peralatan terbaru</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <strong>Catatan Penting:</strong>
+                        <ul>
+                            <li>Pemeliharaan dilakukan secara rutin sesuai jadwal</li>
+                            <li>Kalibrasi dilakukan sesuai program yang telah ditentukan</li>
+                            <li>Status peralatan harus selalu diperbarui</li>
+                            <li>Laporan kerusakan harus dibuat jika ditemukan kerusakan</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="process-12">
+                    <h3>12. Proses Approval</h3>
+                    <p><strong>Deskripsi</strong>: Proses approval untuk memastikan kualitas dan validitas data sebelum digunakan dalam proses bisnis. Approval dilakukan untuk transaksi (Approval LS) dan data master (Approval DM).</p>
+                    
+                    <div class="diagram-container">
+                        <div class="diagram-title">Business Process Approval</div>
+                        <img src="diagrams/process-12-proses-approval.png" 
+                             alt="Business Process Approval - SALIMS" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="diagram-placeholder" style="display: none;">
+                            Diagram: Business Process Approval<br>
+                            <small>Simpan diagram dengan nama <code>process-12-proses-approval.png</code> di folder <code>diagrams/</code></small>
+                        </div>
+                        <div class="diagram-caption">Diagram alur proses approval untuk transaksi dan data master</div>
+                    </div>
+
+                    <div class="role-box">
+                        <strong>Role yang Terlibat:</strong>
+                        <ul>
+                            <li><strong>Approver</strong>: Melakukan review dan approval terhadap transaksi atau data master</li>
+                            <li><strong>Admin</strong>: Membuat transaksi atau data master yang memerlukan approval</li>
+                            <li><strong>Manager</strong>: Melakukan final approval untuk transaksi penting</li>
+                        </ul>
+                    </div>
+
+                    <h4>Jenis Approval:</h4>
+                    <div class="process-flow">
+                        <h5>1. Approval LS (Laboratory Sample) - Approval Transaksi</h5>
+                        <p><strong>Deskripsi</strong>: Approval LS digunakan untuk approval transaksi yang terkait dengan sample dan pengujian, seperti Testing Order, Planning Taking Sample, Taking Sample, Sample Handling, Testing Process, dan Testing Review.</p>
+                        
+                        <div class="note-box" style="margin-top: 0.5rem; background: #e7f3ff; border-left-color: #2196F3;">
+                            <strong>📱 Implementasi Sistem:</strong> Form "Approval LS" di modul APPROVAL<br>
+                            <small>
+                                <strong>Fungsi:</strong> Form ini digunakan untuk melakukan approval terhadap transaksi, termasuk:
+                                <ul style="margin-top: 0.25rem; margin-left: 1.5rem;">
+                                    <li>Detail Transaksi - Menampilkan informasi lengkap transaksi yang akan di-approve</li>
+                                    <li>Detail Sample (untuk Testing Order) - Menampilkan daftar sample beserta detailnya</li>
+                                    <li>Detail Price - Menampilkan breakdown harga (Gross, Discount, DPP, VAT, PPH, NET)</li>
+                                    <li>Modal Approval - Form untuk melakukan approval dengan field:
+                                        <ul style="margin-top: 0.25rem; margin-left: 1.5rem;">
+                                            <li>Status - Dropdown dengan opsi: CHECKED, VERIFIED, APPROVED, REJECT, CANCEL</li>
+                                            <li>Approval Date - Tanggal approval</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                Form ini memungkinkan approver untuk melihat detail lengkap transaksi sebelum melakukan approval. Status approval menentukan apakah transaksi dapat dilanjutkan ke proses berikutnya atau ditolak.
+                            </small>
+                        </div>
+                        
+                        <!-- Screenshot Approval LS Testing Order -->
+                        <div style="margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border: 1px solid #dee2e6;">
+                            <h5 style="margin-bottom: 0.75rem; color: #495057;">📸 Screenshot: Form Approval LS untuk Testing Order</h5>
+                            <img src="images/approval-ls-testing-order.png" 
+                                 alt="Form Approval LS Testing Order - SALIMS" 
+                                 style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <div style="display: none; padding: 2rem; text-align: center; color: #6c757d; background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 4px;">
+                                <p>⚠️ Gambar tidak ditemukan. Silakan:</p>
+                                <ol style="text-align: left; display: inline-block; margin-top: 0.5rem;">
+                                    <li>Simpan screenshot dengan nama <code>approval-ls-testing-order.png</code></li>
+                                    <li>Letakkan di folder <code>images/</code> relatif terhadap file HTML ini</li>
+                                    <li>Atau ganti path <code>src</code> pada tag img di atas</li>
+                                </ol>
+                            </div>
+                            <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #6c757d;">
+                                <strong>Catatan:</strong> Form ini digunakan untuk melakukan approval terhadap Testing Order. Approver dapat melihat detail lengkap Testing Order, sample, dan harga sebelum memutuskan status approval (CHECKED, VERIFIED, APPROVED, REJECT, atau CANCEL).
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="process-flow" style="margin-top: 2rem;">
+                        <h5>2. Approval DM (Data Master) - Approval Data Master</h5>
+                        <p><strong>Deskripsi</strong>: Approval DM digunakan untuk approval data master seperti Equipment, Sample, Formula, BOM (Bill of Materials), dan Formula Reference. Approval ini memastikan data master yang digunakan dalam sistem sudah divalidasi dan disetujui.</p>
+                        
+                        <div class="note-box" style="margin-top: 0.5rem; background: #e7f3ff; border-left-color: #2196F3;">
+                            <strong>📱 Implementasi Sistem:</strong> Form "Approval DM" di modul APPROVAL<br>
+                            <small>
+                                <strong>Fungsi:</strong> Form ini digunakan untuk melakukan approval terhadap data master, termasuk:
+                                <ul style="margin-top: 0.25rem; margin-left: 1.5rem;">
+                                    <li>Detail Data Master - Menampilkan informasi lengkap data master yang akan di-approve (Equipment, Sample, Formula, BOM, atau Formula Reference)</li>
+                                    <li>Modal Approval - Form untuk melakukan approval dengan field:
+                                        <ul style="margin-top: 0.25rem; margin-left: 1.5rem;">
+                                            <li>Status - Dropdown dengan opsi: CHECKED, VERIFIED, APPROVED, REJECT, CANCEL</li>
+                                            <li>Approval Date - Tanggal approval</li>
+                                            <li>Description - Deskripsi atau komentar approval (opsional)</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                Form ini memungkinkan approver untuk melihat detail lengkap data master sebelum melakukan approval. Status approval menentukan apakah data master dapat digunakan dalam sistem atau perlu direvisi.
+                            </small>
+                        </div>
+                        
+                        <!-- Screenshot Approval DM Equipment -->
+                        <div style="margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border: 1px solid #dee2e6;">
+                            <h5 style="margin-bottom: 0.75rem; color: #495057;">📸 Screenshot: Form Approval DM untuk Equipment</h5>
+                            <img src="images/approval-dm-equipment.png" 
+                                 alt="Form Approval DM Equipment - SALIMS" 
+                                 style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <div style="display: none; padding: 2rem; text-align: center; color: #6c757d; background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 4px;">
+                                <p>⚠️ Gambar tidak ditemukan. Silakan:</p>
+                                <ol style="text-align: left; display: inline-block; margin-top: 0.5rem;">
+                                    <li>Simpan screenshot dengan nama <code>approval-dm-equipment.png</code></li>
+                                    <li>Letakkan di folder <code>images/</code> relatif terhadap file HTML ini</li>
+                                    <li>Atau ganti path <code>src</code> pada tag img di atas</li>
+                                </ol>
+                            </div>
+                            <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #6c757d;">
+                                <strong>Catatan:</strong> Form ini digunakan untuk melakukan approval terhadap data master Equipment. Approver dapat melihat detail lengkap Equipment sebelum memutuskan status approval (CHECKED, VERIFIED, APPROVED, REJECT, atau CANCEL). Approval DM juga digunakan untuk data master lainnya seperti Sample, Formula, BOM, dan Formula Reference.
+                            </p>
+                        </div>
+                    </div>
+
+                    <h4>Alur Proses Approval:</h4>
+                    <div class="process-flow">
+                        <ol>
+                            <li><strong>Mulai</strong> → Admin/User membuat transaksi atau data master</li>
+                            <li><strong>Transaksi/Data Master Dibuat</strong> - Status awal: Pending Approval</li>
+                            <li><strong>Approval Request</strong> - Sistem mengirimkan notifikasi ke approver</li>
+                            <li><strong>Approver Review</strong> - Approver melihat detail transaksi/data master</li>
+                            <li><strong>Decision: Setujui?</strong>
+                                <ul>
+                                    <li><strong>Ya</strong>: 
+                                        <ul>
+                                            <li>Pilih Status: CHECKED, VERIFIED, atau APPROVED</li>
+                                            <li>Isi Approval Date</li>
+                                            <li>Isi Description (opsional)</li>
+                                            <li>Submit Approval</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Tidak</strong>: 
+                                        <ul>
+                                            <li>Pilih Status: REJECT atau CANCEL</li>
+                                            <li>Isi Approval Date</li>
+                                            <li>Isi Description (alasan penolakan)</li>
+                                            <li>Submit Approval</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><strong>Update Status</strong> - Sistem memperbarui status transaksi/data master</li>
+                            <li><strong>Decision: Semua Approval Selesai?</strong>
+                                <ul>
+                                    <li><strong>Ya</strong>: Transaksi/Data Master dapat digunakan</li>
+                                    <li><strong>Tidak</strong>: Menunggu approval berikutnya</li>
+                                </ul>
+                            </li>
+                            <li><strong>Selesai</strong></li>
+                        </ol>
+                    </div>
+
+                    <div class="output-box">
+                        <strong>Output:</strong>
+                        <ul>
+                            <li>Status approval transaksi/data master</li>
+                            <li>Riwayat approval (approver, tanggal, status)</li>
+                            <li>Notifikasi approval kepada user terkait</li>
+                            <li>Transaksi/data master yang telah disetujui dapat digunakan</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box">
+                        <strong>Catatan Penting:</strong>
+                        <ul>
+                            <li>Approval dapat dilakukan secara bertahap (multi-level approval)</li>
+                            <li>Status approval menentukan apakah transaksi/data master dapat dilanjutkan</li>
+                            <li>Approval REJECT atau CANCEL memerlukan revisi dari pembuat transaksi/data master</li>
+                            <li>Riwayat approval tersimpan untuk audit trail</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </section>
+
+            <section id="integration">
+                <h2>Integrasi Data</h2>
+                <p><strong>Deskripsi</strong>: Semua proses bisnis utama mengirimkan data ke sistem integrasi data untuk konsolidasi dan pelaporan.</p>
+                
+                <div class="diagram-container">
+                    <div class="diagram-title">Business Process Integrasi Data</div>
+                    <img src="diagrams/integrasi-data.png" 
+                         alt="Business Process Integrasi Data - SALIMS" 
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="diagram-placeholder" style="display: none;">
+                        Diagram: Business Process Integrasi Data<br>
+                        <small>Simpan diagram dengan nama <code>integrasi-data.png</code> di folder <code>diagrams/</code></small>
+                    </div>
+                    <div class="diagram-caption">Diagram integrasi data dari semua proses bisnis utama</div>
+                </div>
+
+                <h3>Proses yang Terintegrasi:</h3>
+                <ul>
+                    <li><strong>Administrasi Sampel Uji</strong> → Data permintaan pengujian, pembayaran, LHU</li>
+                    <li><strong>Penanganan Sampel</strong> → Data pengolahan sampel, hasil pengujian, LHU</li>
+                    <li><strong>Manajemen Persediaan</strong> → Data stock opname, penggunaan bahan uji, persediaan</li>
+                    <li><strong>Manajemen Aset</strong> → Data pemeliharaan peralatan, kalibrasi, status peralatan</li>
+                </ul>
+
+                <h3>Integrasi Eksternal:</h3>
+                <ul>
+                    <li><strong>API CIS</strong>: Integrasi untuk data pembayaran pelanggan</li>
+                </ul>
+            </section>
+
+            <section id="roles">
+                <h2>Role dan Tanggung Jawab</h2>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Role</th>
+                            <th>Tanggung Jawab</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Pelanggan</strong></td>
+                            <td>Pendaftaran, mengisi form permintaan, pembayaran, mengakses portal, mengunduh LHU, feedback</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pelayanan Kepada Pelanggan Admin</strong></td>
+                            <td>Analisa permintaan, kalkulasi biaya, terbitkan tagihan, verifikasi pembayaran, siapkan dokumen, berikan LHU</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Manager Teknis</strong></td>
+                            <td>KUP, analisa ketersediaan, disposisi teknis, buat jadwal pengambilan, verifikasi LHU</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Analis</strong></td>
+                            <td>Analisa ketersediaan, persiapan pengujian, melakukan pengujian, kalibrasi, pemeliharaan peralatan</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Penyelia (Supervisor)</strong></td>
+                            <td>Konfirmasi pengolahan sampel, konfirmasi hasil uji, konfirmasi rekonsiliasi</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Admin Persediaan</strong></td>
+                            <td>Konfirmasi penggunaan, stock opname, monitoring, rekap, update data, disposal</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="glossary">
+                <h2>Glossary</h2>
+                
+                <div class="glossary-item">
+                    <strong>LHU</strong>
+                    <p>Laporan Hasil Uji - Dokumen resmi yang berisi hasil pengujian sampel</p>
+                </div>
+
+                <div class="glossary-item">
+                    <strong>KUP</strong>
+                    <p>Kaji Ulang Permintaan - Proses review teknis untuk menentukan kelayakan permintaan pengujian</p>
+                </div>
+
+                <div class="glossary-item">
+                    <strong>MoU</strong>
+                    <p>Memorandum of Understanding - Perjanjian kerjasama antara laboratorium dan pelanggan</p>
+                </div>
+
+                <div class="glossary-item">
+                    <strong>Pra-Bayar</strong>
+                    <p>Sistem pembayaran dimana pelanggan membayar sebelum pengujian dilakukan</p>
+                </div>
+
+                <div class="glossary-item">
+                    <strong>Pasca-Bayar</strong>
+                    <p>Sistem pembayaran dimana pelanggan membayar setelah pengujian selesai (biasanya untuk pelanggan MoU)</p>
+                </div>
+
+                <div class="glossary-item">
+                    <strong>SPK</strong>
+                    <p>Surat Perintah Kerja - Dokumen yang mengatur jadwal dan detail pengambilan sampel</p>
+                </div>
+
+                <div class="glossary-item">
+                    <strong>In-situ</strong>
+                    <p>Pengujian yang dilakukan langsung di lokasi pengambilan sampel</p>
+                </div>
+
+                <div class="glossary-item">
+                    <strong>Stock Opname</strong>
+                    <p>Proses penghitungan fisik persediaan untuk memastikan kesesuaian dengan data sistem</p>
+                </div>
+
+                <div class="glossary-item">
+                    <strong>Kalibrasi</strong>
+                    <p>Proses pengecekan dan penyesuaian akurasi peralatan pengujian</p>
+                </div>
+
+                <div class="glossary-item">
+                    <strong>CIS</strong>
+                    <p>Customer Information System - Sistem informasi pelanggan yang terintegrasi</p>
+                </div>
+            </section>
+        </div>
+
+        <a href="#" class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">↑</a>
+    </div>
+
+    <script>
+        // Smooth scroll untuk anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle dengan overlay
+        const sidebar = document.getElementById('sidebar');
+        const menuToggle = document.createElement('button');
+        menuToggle.className = 'menu-toggle';
+        menuToggle.innerHTML = '☰ <span>Menu</span>';
+        menuToggle.setAttribute('aria-label', 'Toggle menu');
+        menuToggle.style.display = window.innerWidth <= 768 ? 'flex' : 'none';
+        
+        const overlay = document.createElement('div');
+        overlay.className = 'sidebar-overlay';
+        overlay.id = 'sidebar-overlay';
+        
+        function openSidebar() {
+            sidebar.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeSidebar() {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        menuToggle.onclick = (e) => {
+            e.stopPropagation();
+            if (sidebar.classList.contains('active')) {
+                closeSidebar();
+            } else {
+                openSidebar();
+            }
+        };
+        
+        overlay.onclick = () => {
+            closeSidebar();
+        };
+        
+        // Close sidebar when clicking on a link (mobile)
+        const sidebarLinks = sidebar.querySelectorAll('a');
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    closeSidebar();
+                }
+            });
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                closeSidebar();
+                menuToggle.style.display = 'none';
+            } else {
+                menuToggle.style.display = 'flex';
+            }
+        });
+        
+        document.body.appendChild(menuToggle);
+        document.body.appendChild(overlay);
+    </script>
+</body>
+</html>
+
